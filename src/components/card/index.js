@@ -19,7 +19,7 @@ const CardMain = styled.View`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #e7e5e4;
+  background-color: #e9174c;
   margin: 12px;
   border-radius: 6px;
   width: 245px;

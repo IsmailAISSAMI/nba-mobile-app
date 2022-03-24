@@ -12,7 +12,7 @@ const Routes = () => {
     <NavigationContainer>
       <BottomTab.Navigator>
         <BottomTab.Screen options={{ headerShown: false}} name='HomeStack' component={HomeStack} />
-        <BottomTab.Screen options={{ headerShown: false}} name='PlayersStack' component={PlayersStack} />
+        <BottomTab.Screen options={{ headerShown: false}}name='PlayersStack' component={PlayersStack} />
       </BottomTab.Navigator>
     </NavigationContainer>
   )

@@ -5,32 +5,33 @@ import styled from 'styled-components'
 import Avatar from '../components/avatar'
 
 const Details = ({ route }) => {
-  const [player, setPlayer] = useState({})
+  const [season, setSeason] = useState({})
 
   const {
-    params: { id, year }
+    params: { id, year, player }
   } = route
 
   useEffect(() => {
-    console.log(id)
-    console.log(year)
     axios({
       method: 'GET',
-      url: `https://data.nba.net/data/10s/prod/v1/2020/players/${id}_profile.json`
+      url: `https://data.nba.net/data/10s/prod/v1/2020/players/${player.personId}_profile.json`
     })
-      .then(response => {
-        console.log('detail page: ' + response)
-        setPlayer(...response)
-      })
+      .then(response => setSeason(response.data))
       .catch(error => console.log(error))
   }, [])
+
+  useEffect(()=>{
+    console.log(player)
+    console.log(season)
+  }, [season])
 
   return (
     <Container>
       <Avatar
-        urlImage={`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${player?.personId}.png`}
+        urlImage={`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${player.personId}.png`}
       />
-      <Text>First name{player?.firstName}</Text>
+      <Text>{player?.firstName}</Text>
+      <Text>{player?.lastName}</Text>
       {/* <Text>{character.description}</Text> */}
     </Container>
   )

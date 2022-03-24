@@ -6,11 +6,15 @@ import Avatar from '../components/avatar'
 import Card from '../components/card'
 import {HeaderText} from '../components/texts'
 
-const Characters = ({ navigation }) => {
-  const [year, setYear] = useState(2012)
+const Players = ({ navigation, route }) => {
   const [players, setPlayers] = useState([])
 
+  const {
+     params: { id, year }
+   } = route
+
   useEffect(() => {
+    console.log("players"+year)
     axios({
       method: 'GET',
       url: `https://data.nba.net/data/10s/prod/v1/${year}/players.json`
@@ -27,11 +31,11 @@ const Characters = ({ navigation }) => {
       <FlatList
         data={players}
         keyExtractor={item => item.personId}
-        // onEndReached={() => setOffset(offset + 20)}
         renderItem={({ item }) => (
           <Button
             onPress={() =>
-              navigation.navigate('Details', { id: item.personId, year: year })
+              navigation.navigate('Details', { year: year, player: item })
+              //navigation.navigate('PlayersStack', { screen: "Details",  params: {id: item.personId, year: year} })
             }
           >
             <Card
@@ -48,4 +52,4 @@ const Characters = ({ navigation }) => {
 const Button = styled.TouchableOpacity``
 const TextStyled = styled.Text``
 
-export default Characters
+export default Players

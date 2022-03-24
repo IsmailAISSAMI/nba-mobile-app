@@ -23,6 +23,7 @@ const Grid = ({ season }) => {
 }
 
 const Container = styled.View`
+  padding: 16px 0;
   background-color: #1c2f2f;
 `
 

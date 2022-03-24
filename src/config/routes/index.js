@@ -1,19 +1,18 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import HomeStack from './homeStack'
 import PlayersStack from './playersStack'
 
-const BottomTab = createBottomTabNavigator()
+const Stack = createNativeStackNavigator()
 
 const Routes = () => {
   return (
     <NavigationContainer>
-      <BottomTab.Navigator>
-        <BottomTab.Screen options={{ headerShown: false}} name='HomeStack' component={HomeStack} />
-        <BottomTab.Screen options={{ headerShown: false}}name='PlayersStack' component={PlayersStack} />
-      </BottomTab.Navigator>
+      <Stack.Navigator>
+        <Stack.Screen options={{ headerShown: false}} name='HomeStack' component={HomeStack} />
+      </Stack.Navigator>
     </NavigationContainer>
   )
 }

@@ -10,7 +10,7 @@ const Players = ({ navigation, route }) => {
   const [players, setPlayers] = useState([])
 
   const {
-     params: { id, year }
+     params: { year }
    } = route
 
   useEffect(() => {
@@ -35,7 +35,6 @@ const Players = ({ navigation, route }) => {
           <Button
             onPress={() =>
               navigation.navigate('Details', { year: year, player: item })
-              //navigation.navigate('PlayersStack', { screen: "Details",  params: {id: item.personId, year: year} })
             }
           >
             <Card

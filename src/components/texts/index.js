@@ -29,6 +29,7 @@ const PrimaryButtonText = styled.Text`
 
 const StatsTitle = styled.Text`
   font-size: 18px;
+  padding: 10px 0; 
   font-weight: 700;
   color: #fff;
   text-align: center;

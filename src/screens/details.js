@@ -50,5 +50,4 @@ const Center = styled.View`
   align-items: center;
 `
 
-
 export default Details

@@ -1,5 +1,7 @@
 # NBA mobile app
 
+![demo](demo.gif)
+
 ## Install the application
 
 ### Clone the project

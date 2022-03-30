@@ -1,7 +1,10 @@
 import styled from 'styled-components'
 
 const CommonText = styled.Text`
-  font-size: 24px;
+  font-size: 16px;
+  color: #000;
+  font-weight: 600;
+  margin: 0 6px;
 `
 
 const HeaderText = styled.Text`

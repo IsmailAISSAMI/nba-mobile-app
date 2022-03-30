@@ -22,11 +22,6 @@ const Details = ({ route }) => {
       .catch(error => console.log(error))
   }, [])
 
-  useEffect(() => {
-    console.log(player)
-    console.log(season)
-  }, [season])
-
   return (
     <Container>
       <Center>

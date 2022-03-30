@@ -30,6 +30,12 @@ const Home = ({ navigation }) => {
       >
         <PrimaryButtonText>{lastYear - 1}</PrimaryButtonText>
       </SecondaryButton>
+
+      <PrimaryButton
+        onPress={() => navigation.navigate('Favorite')}
+      >
+        <PrimaryButtonText>FavList</PrimaryButtonText>
+      </PrimaryButton>
     </Container>
   )
 }

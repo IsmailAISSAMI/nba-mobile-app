@@ -1,20 +1,39 @@
 import React, { useEffect, useState } from 'react'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { FlatList } from 'react-native'
 import axios from 'axios'
 import styled from 'styled-components'
-import { FlatList } from 'react-native'
-import Avatar from '../components/avatar'
+import FlashMessage from 'react-native-flash-message'
+
 import Card from '../components/card'
-import {HeaderText} from '../components/texts'
+import { HeaderText } from '../components/texts'
+
+import readFavorite from '../utils/readFavorite'
+import addToFavorite from '../utils/addToFavorite'
+import removeFromFavorite from '../utils/removeFromFavorite'
 
 const Players = ({ navigation, route }) => {
   const [players, setPlayers] = useState([])
 
   const {
-     params: { year }
-   } = route
+    params: { year }
+  } = route
+
+  const checkFavorite = async player => {
+    const allFav = await readFavorite()
+
+    const index = allFav
+      .map(f => f.id)
+      .findIndex(itemId => itemId === player.personId)
+
+    if (index === -1) {
+      addToFavorite(player)
+    } else {
+      removeFromFavorite(player)
+    }
+  }
 
   useEffect(() => {
-    console.log("players"+year)
     axios({
       method: 'GET',
       url: `https://data.nba.net/data/10s/prod/v1/${year}/players.json`
@@ -27,6 +46,7 @@ const Players = ({ navigation, route }) => {
 
   return (
     <>
+      <FlashMessage position='top' />
       <HeaderText>Players of {year}&rsquo;s Season</HeaderText>
       <FlatList
         data={players}
@@ -41,6 +61,16 @@ const Players = ({ navigation, route }) => {
               fullName={`${item.firstName} ${item.lastName.toUpperCase()}`}
               urlImage={`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${item.personId}.png`}
             />
+
+            <Button
+              onPress={() => {
+                checkFavorite(item)
+              }}
+            >
+              <TextStyled>
+                ADD TO FAVORITE
+              </TextStyled>
+            </Button>
           </Button>
         )}
       />

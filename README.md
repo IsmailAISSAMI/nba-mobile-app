@@ -1,6 +1,6 @@
 # NBA mobile app
 ### Demo on Android
-![demo](demo.gif)
+![demo](demo2.gif)
 
 ## Install the application
 
